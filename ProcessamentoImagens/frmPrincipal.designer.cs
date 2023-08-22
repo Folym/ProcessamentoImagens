@@ -49,6 +49,12 @@
             this.btnInverteRBsemDMA = new System.Windows.Forms.Button();
             this.EspD = new System.Windows.Forms.Button();
             this.btnRot = new System.Windows.Forms.Button();
+            this.CanalR = new System.Windows.Forms.Button();
+            this.CanalG = new System.Windows.Forms.Button();
+            this.CanalB = new System.Windows.Forms.Button();
+            this.CanalRDMA = new System.Windows.Forms.Button();
+            this.CanalGDMA = new System.Windows.Forms.Button();
+            this.CanalBDMA = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxImg1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxImg2)).BeginInit();
             this.SuspendLayout();
@@ -251,11 +257,77 @@
             this.btnRot.UseVisualStyleBackColor = true;
             this.btnRot.Click += new System.EventHandler(this.btnRot_Click);
             // 
+            // CanalR
+            // 
+            this.CanalR.Location = new System.Drawing.Point(433, 570);
+            this.CanalR.Name = "CanalR";
+            this.CanalR.Size = new System.Drawing.Size(65, 23);
+            this.CanalR.TabIndex = 124;
+            this.CanalR.Text = "CanalR";
+            this.CanalR.UseVisualStyleBackColor = true;
+            this.CanalR.Click += new System.EventHandler(this.CanalR_Click);
+            // 
+            // CanalG
+            // 
+            this.CanalG.Location = new System.Drawing.Point(504, 570);
+            this.CanalG.Name = "CanalG";
+            this.CanalG.Size = new System.Drawing.Size(71, 23);
+            this.CanalG.TabIndex = 125;
+            this.CanalG.Text = "CanalG";
+            this.CanalG.UseVisualStyleBackColor = true;
+            this.CanalG.Click += new System.EventHandler(this.CanalG_Click);
+            // 
+            // CanalB
+            // 
+            this.CanalB.Location = new System.Drawing.Point(581, 570);
+            this.CanalB.Name = "CanalB";
+            this.CanalB.Size = new System.Drawing.Size(60, 23);
+            this.CanalB.TabIndex = 126;
+            this.CanalB.Text = "CanalB";
+            this.CanalB.UseVisualStyleBackColor = true;
+            this.CanalB.Click += new System.EventHandler(this.CanalB_Click);
+            // 
+            // CanalRDMA
+            // 
+            this.CanalRDMA.Location = new System.Drawing.Point(647, 570);
+            this.CanalRDMA.Name = "CanalRDMA";
+            this.CanalRDMA.Size = new System.Drawing.Size(65, 23);
+            this.CanalRDMA.TabIndex = 127;
+            this.CanalRDMA.Text = "CanalRDMA";
+            this.CanalRDMA.UseVisualStyleBackColor = true;
+            this.CanalRDMA.Click += new System.EventHandler(this.CanalRDMA_Click);
+            // 
+            // CanalGDMA
+            // 
+            this.CanalGDMA.Location = new System.Drawing.Point(718, 570);
+            this.CanalGDMA.Name = "CanalGDMA";
+            this.CanalGDMA.Size = new System.Drawing.Size(65, 23);
+            this.CanalGDMA.TabIndex = 128;
+            this.CanalGDMA.Text = "CanalGDMA";
+            this.CanalGDMA.UseVisualStyleBackColor = true;
+            this.CanalGDMA.Click += new System.EventHandler(this.CanalGDMA_Click);
+            // 
+            // CanalBDMA
+            // 
+            this.CanalBDMA.Location = new System.Drawing.Point(790, 570);
+            this.CanalBDMA.Name = "CanalBDMA";
+            this.CanalBDMA.Size = new System.Drawing.Size(65, 23);
+            this.CanalBDMA.TabIndex = 129;
+            this.CanalBDMA.Text = "CanalBDMA";
+            this.CanalBDMA.UseVisualStyleBackColor = true;
+            this.CanalBDMA.Click += new System.EventHandler(this.CanalBDMA_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1220, 608);
+            this.Controls.Add(this.CanalBDMA);
+            this.Controls.Add(this.CanalGDMA);
+            this.Controls.Add(this.CanalRDMA);
+            this.Controls.Add(this.CanalB);
+            this.Controls.Add(this.CanalG);
+            this.Controls.Add(this.CanalR);
             this.Controls.Add(this.btnRot);
             this.Controls.Add(this.EspD);
             this.Controls.Add(this.btnInverteRBsemDMA);
@@ -308,6 +380,12 @@
         private System.Windows.Forms.Button btnInverteRBsemDMA;
         private System.Windows.Forms.Button EspD;
         private System.Windows.Forms.Button btnRot;
+        private System.Windows.Forms.Button CanalR;
+        private System.Windows.Forms.Button CanalG;
+        private System.Windows.Forms.Button CanalB;
+        private System.Windows.Forms.Button CanalRDMA;
+        private System.Windows.Forms.Button CanalGDMA;
+        private System.Windows.Forms.Button CanalBDMA;
     }
 }
 

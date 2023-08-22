@@ -95,7 +95,10 @@ namespace ProcessamentoImagens
 
         private void btnRotacaoDMA_Click(object sender, EventArgs e)
         {
-
+            Bitmap imgDest = new Bitmap(image.Height,image.Width);
+            imageBitmap = (Bitmap)image;
+            Filtros.rotacionaDMA(imageBitmap, imgDest);
+            pictBoxImg2.Image = imgDest;
         }
 
         private void btnInverteRB_Click(object sender, EventArgs e)
@@ -156,9 +159,57 @@ namespace ProcessamentoImagens
 
         private void btnRot_Click(object sender, EventArgs e)
         {
-            Bitmap imgDest = new Bitmap(image);
+            Bitmap imgDest = new Bitmap(image.Height,image.Width);
             imageBitmap = (Bitmap)image;
             Filtros.rotaciona(imageBitmap, imgDest);
+            pictBoxImg2.Image = imgDest;
+        }
+
+        private void CanalR_Click(object sender, EventArgs e)
+        {
+            Bitmap imgDest = new Bitmap(image);
+            imageBitmap = (Bitmap)image;
+            Filtros.canalVermelho(imageBitmap, imgDest);
+            pictBoxImg2.Image = imgDest;
+        }
+
+        private void CanalG_Click(object sender, EventArgs e)
+        {
+            Bitmap imgDest = new Bitmap(image);
+            imageBitmap = (Bitmap)image;
+            Filtros.canalVerde(imageBitmap, imgDest);
+            pictBoxImg2.Image = imgDest;
+        }
+
+        private void CanalB_Click(object sender, EventArgs e)
+        {
+            Bitmap imgDest = new Bitmap(image);
+            imageBitmap = (Bitmap)image;
+            Filtros.canalAzul(imageBitmap, imgDest);
+            pictBoxImg2.Image = imgDest;
+        }
+
+        private void CanalRDMA_Click(object sender, EventArgs e)
+        {
+            Bitmap imgDest = new Bitmap(image);
+            imageBitmap = (Bitmap)image;
+            Filtros.canalVermelhoDMA(imageBitmap, imgDest);
+            pictBoxImg2.Image = imgDest;
+        }
+
+        private void CanalGDMA_Click(object sender, EventArgs e)
+        {
+            Bitmap imgDest = new Bitmap(image);
+            imageBitmap = (Bitmap)image;
+            Filtros.canalVerdeDMA(imageBitmap, imgDest);
+            pictBoxImg2.Image = imgDest;
+        }
+
+        private void CanalBDMA_Click(object sender, EventArgs e)
+        {
+            Bitmap imgDest = new Bitmap(image);
+            imageBitmap = (Bitmap)image;
+            Filtros.canalAzulDMA(imageBitmap, imgDest);
             pictBoxImg2.Image = imgDest;
         }
     }

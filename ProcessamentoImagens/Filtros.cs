@@ -162,6 +162,81 @@ namespace ProcessamentoImagens
             }
         }
         //sem acesso a memoria
+        public static void canalAzul(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
+        {
+            int width = imageBitmapSrc.Width;
+            int height = imageBitmapSrc.Height;
+            int r, g, b;
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    //obtendo a cor do pixel
+                    Color cor = imageBitmapSrc.GetPixel(x, y);
+
+                    r = 0;
+                    g = 0;
+                    b = cor.B;
+
+
+                    //nova cor
+                    Color newcolor = Color.FromArgb(r, g, b);
+                    imageBitmapDest.SetPixel(x, y, newcolor);
+                }
+            }
+        }
+        //sem acesso a memoria
+        public static void canalVerde(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
+        {
+            int width = imageBitmapSrc.Width;
+            int height = imageBitmapSrc.Height;
+            int r, g, b;
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    //obtendo a cor do pixel
+                    Color cor = imageBitmapSrc.GetPixel(x, y);
+
+                    r = 0;
+                    g = cor.G;
+                    b = 0;
+
+
+                    //nova cor
+                    Color newcolor = Color.FromArgb(r, g, b);
+                    imageBitmapDest.SetPixel(x, y, newcolor);
+                }
+            }
+        }
+        //sem acesso a memoria
+        public static void canalVermelho(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
+        {
+            int width = imageBitmapSrc.Width;
+            int height = imageBitmapSrc.Height;
+            int r, g, b;
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    //obtendo a cor do pixel
+                    Color cor = imageBitmapSrc.GetPixel(x, y);
+
+                    r = cor.R;
+                    g = 0;
+                    b = 0;
+
+
+                    //nova cor
+                    Color newcolor = Color.FromArgb(r, g, b);
+                    imageBitmapDest.SetPixel(x, y, newcolor);
+                }
+            }
+        }
+        //sem acesso a memoria
         public static void rotaciona(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
         {
             int width = imageBitmapSrc.Width;
@@ -172,9 +247,55 @@ namespace ProcessamentoImagens
                 for (int x = 0; x < width; x++)
                 {
                     Color cor = imageBitmapSrc.GetPixel(x, y);
-                    imageBitmapDest.SetPixel(y, x, cor);
+                    imageBitmapDest.SetPixel(y,width - x - 1, cor);
                 }
             }
+        }
+        //com acesso a memoria
+        public static void rotacionaDMA(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
+        {
+            int width = imageBitmapSrc.Width;
+            int height = imageBitmapSrc.Height;
+            int pixelSize = 3;
+
+            //lock dados bitmap origem
+            BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            //lock dados bitmap destino
+            BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, height, width),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            int padding = bitmapDataSrc.Stride - (width * pixelSize);
+
+            unsafe
+            {
+                byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
+                byte* dst, aux;
+
+                dst = (byte*)bitmapDataDst.Scan0.ToPointer() + bitmapDataDst.Stride * (height - 1);
+                aux = dst;
+                int r, g, b;
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        aux = dst;
+                        b = *(src++); 
+                        g = *(src++);
+                        r = *(src++);
+                        *(aux++) = (byte)b;
+                        *(aux++) = (byte)g;
+                        *(aux++) = (byte)r;
+                        dst -= bitmapDataDst.Stride;
+                    }
+                    src += padding;
+                    dst += (bitmapDataDst.Stride * (height - 1))+3;
+                }
+            }
+            //unlock imagem origem
+            imageBitmapSrc.UnlockBits(bitmapDataSrc);
+            //unlock imagem destino
+            imageBitmapDest.UnlockBits(bitmapDataDst);
         }
         //com acesso a memória
         public static void convert_to_grayDMA(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
@@ -494,6 +615,138 @@ namespace ProcessamentoImagens
                 }
             }
             //unlock imagem origem 
+            imageBitmapSrc.UnlockBits(bitmapDataSrc);
+            //unlock imagem destino
+            imageBitmapDest.UnlockBits(bitmapDataDst);
+        }
+        //com acesso a memoria
+        public static void canalAzulDMA(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
+        {
+            int width = imageBitmapSrc.Width;
+            int height = imageBitmapSrc.Height;
+            int pixelSize = 3;
+            Int32 gs;
+
+            //lock dados bitmap origem
+            BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            //lock dados bitmap destino
+            BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            int padding = bitmapDataSrc.Stride - (width * pixelSize);
+
+            unsafe
+            {
+                byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
+                byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
+
+                int r, g, b;
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        b = *(src++); //está armazenado dessa forma: b g r 
+                        g = *(src++);
+                        r = *(src++);
+                        
+                        *(dst++) = (byte)b;
+                        *(dst++) = 0;
+                        *(dst++) = 0;
+                    }
+                    src += padding;
+                    dst += padding;
+                }
+            }
+            //unlock imagem origem
+            imageBitmapSrc.UnlockBits(bitmapDataSrc);
+            //unlock imagem destino
+            imageBitmapDest.UnlockBits(bitmapDataDst);
+        }
+        //com acesso a memoria
+        public static void canalVerdeDMA(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
+        {
+            int width = imageBitmapSrc.Width;
+            int height = imageBitmapSrc.Height;
+            int pixelSize = 3;
+            Int32 gs;
+
+            //lock dados bitmap origem
+            BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            //lock dados bitmap destino
+            BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            int padding = bitmapDataSrc.Stride - (width * pixelSize);
+
+            unsafe
+            {
+                byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
+                byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
+
+                int r, g, b;
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        b = *(src++); //está armazenado dessa forma: b g r 
+                        g = *(src++);
+                        r = *(src++);
+                        
+                        *(dst++) = 0;
+                        *(dst++) = (byte)g;
+                        *(dst++) = 0;
+                    }
+                    src += padding;
+                    dst += padding;
+                }
+            }
+            //unlock imagem origem
+            imageBitmapSrc.UnlockBits(bitmapDataSrc);
+            //unlock imagem destino
+            imageBitmapDest.UnlockBits(bitmapDataDst);
+        }
+        //com acesso a memoria
+        public static void canalVermelhoDMA(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
+        {
+            int width = imageBitmapSrc.Width;
+            int height = imageBitmapSrc.Height;
+            int pixelSize = 3;
+            Int32 gs;
+
+            //lock dados bitmap origem
+            BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            //lock dados bitmap destino
+            BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            int padding = bitmapDataSrc.Stride - (width * pixelSize);
+
+            unsafe
+            {
+                byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
+                byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
+
+                int r, g, b;
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        b = *(src++); //está armazenado dessa forma: b g r 
+                        g = *(src++);
+                        r = *(src++);
+
+                        *(dst++) = 0;
+                        *(dst++) = 0;
+                        *(dst++) = (byte)r;
+                    }
+                    src += padding;
+                    dst += padding;
+                }
+            }
+            //unlock imagem origem
             imageBitmapSrc.UnlockBits(bitmapDataSrc);
             //unlock imagem destino
             imageBitmapDest.UnlockBits(bitmapDataDst);

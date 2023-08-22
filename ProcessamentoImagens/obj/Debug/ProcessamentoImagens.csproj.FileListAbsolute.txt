@@ -17,3 +17,24 @@ C:\Users\heito\OneDrive\Área de Trabalho\C#\ProcessamentoImagens\ProcessamentoI
 C:\Users\heito\OneDrive\Área de Trabalho\C#\ProcessamentoImagens\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.exe
 C:\Users\heito\OneDrive\Área de Trabalho\C#\ProcessamentoImagens\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.pdb
 C:\Users\heito\OneDrive\Área de Trabalho\C#\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.pdb
+D:\ProcessamentoImagens\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.exe.config
+D:\ProcessamentoImagens\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.exe
+D:\ProcessamentoImagens\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.pdb
+D:\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.frmPrincipal.resources
+D:\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.Properties.Resources.resources
+D:\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.csproj.GenerateResource.cache
+D:\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.csproj.CoreCompileInputs.cache
+D:\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.exe
+D:\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.pdb
+D:\Tor\ProcessamentoImagens\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.exe.config
+D:\Tor\ProcessamentoImagens\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.exe
+D:\Tor\ProcessamentoImagens\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.pdb
+D:\Tor\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.csproj.AssemblyReference.cache
+D:\Tor\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.csproj.SuggestedBindingRedirects.cache
+D:\Tor\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.frmPrincipal.resources
+D:\Tor\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.Properties.Resources.resources
+D:\Tor\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.csproj.GenerateResource.cache
+D:\Tor\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.csproj.CoreCompileInputs.cache
+D:\Tor\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.exe
+D:\Tor\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.pdb
+D:\ProcessamentoImagens\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.csprojAssemblyReference.cache
